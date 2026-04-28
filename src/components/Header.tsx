@@ -115,19 +115,6 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Categories */}
-        <div className="hidden md:flex gap-6 py-3 border-t border-gray-200 overflow-x-auto">
-          {categories.map((cat) => (
-            <Link
-              key={cat.label}
-              href={cat.href}
-              className="text-sm font-medium hover:text-orange whitespace-nowrap"
-            >
-              {cat.label}
-            </Link>
-          ))}
-        </div>
-
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute left-0 right-0 top-full z-50 py-4 border-t border-gray-200 bg-white shadow-xl rounded-b-xl">
