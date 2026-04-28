@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '@/store/cartStore'
 import { FiHeart, FiShoppingCart } from 'react-icons/fi'
+import { FaHeart } from "react-icons/fa";
 
 interface ProductCardProps {
   id: string
@@ -29,6 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [isAdded, setIsAdded] = useState(false)
   const [imageError, setImageError] = useState(false)
   const addItem = useCart((state) => state.addItem)
+  const [liked, setLiked] = useState(false);
 
   const handleAddToCart = () => {
     addItem({
@@ -100,19 +102,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <button
             onClick={handleAddToCart}
             disabled={!inStock}
-            className={`flex-1 py-2 rounded font-semibold transition-all flex items-center justify-center gap-2 ${
-              isAdded
+            className={`flex-1 py-2 rounded font-semibold transition-all flex items-center justify-center gap-2 ${isAdded
                 ? 'bg-green-500 text-white'
                 : inStock
-                ? 'bg-orange text-white hover:bg-orange-dark'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
+                  ? 'bg-orange text-white hover:bg-orange-dark'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
           >
             <FiShoppingCart size={16} />
             {isAdded ? 'Added' : inStock ? 'Add' : 'Out of Stock'}
           </button>
-          <button className="p-2 border border-gray-300 rounded hover:border-orange hover:text-orange">
-            <FiHeart size={18} />
+          <button
+            onClick={() => setLiked(!liked)}
+            className="p-2 border border-gray-300 rounded hover:border-orange hover:text-orange"
+          >
+            {liked ? (
+              <FaHeart size={18} className="text-orange" />
+            ) : (
+              <FiHeart size={18} />
+            )}
           </button>
         </div>
       </div>
