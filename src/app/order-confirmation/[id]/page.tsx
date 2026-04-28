@@ -147,7 +147,7 @@ export default function OrderConfirmation() {
                 </div>
                 <div>
                   <p className="font-semibold">Processing</p>
-                  <p className="text-sm text-gray-600">We're preparing your order</p>
+                  <p className="text-sm text-gray-600">We&apos;re preparing your order</p>
                 </div>
               </div>
 
@@ -168,7 +168,7 @@ export default function OrderConfirmation() {
                 </div>
                 <div>
                   <p className="font-semibold">Delivered</p>
-                  <p className="text-sm text-gray-600">We'll notify you</p>
+                  <p className="text-sm text-gray-600">We&apos;ll notify you</p>
                 </div>
               </div>
             </div>
@@ -192,7 +192,7 @@ export default function OrderConfirmation() {
 
         {/* Next Steps */}
         <div className="bg-orange-light rounded-lg p-8 mb-8">
-          <h2 className="text-xl font-bold mb-4">What's Next?</h2>
+          <h2 className="text-xl font-bold mb-4">What&apos;s Next?</h2>
           <ul className="space-y-3 text-gray-700">
             <li className="flex gap-3">
               <span className="text-orange font-bold">1.</span>
