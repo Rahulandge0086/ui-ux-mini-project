@@ -2,14 +2,25 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useCart } from '@/store/cartStore'
 import { useAuth } from '@/store/authStore'
 import { FiShoppingCart, FiMenu, FiX, FiUser, FiLogOut } from 'react-icons/fi'
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
+  const router = useRouter()
   const cartItems = useCart((state) => state.getTotalItems())
   const { user, logout } = useAuth()
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchInput.trim()) {
+      router.push(`/shop?search=${encodeURIComponent(searchInput)}`)
+      setSearchInput('')
+    }
+  }
 
   const categories = [
     { label: 'All', href: '/' },
@@ -36,20 +47,22 @@ export const Header: React.FC = () => {
           </Link>
 
           {/* Search Bar */}
-          <div className="hidden md:flex flex-1 min-w-0 mx-0 md:mx-6 max-w-2xl">
+          <form onSubmit={handleSearch} className="hidden md:flex flex-1 min-w-0 mx-0 md:mx-6 max-w-2xl">
             <div className="flex w-full min-w-0">
               <input
                 type="text"
                 placeholder="Search iPhone 17 pro..."
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
                 className="flex-1 min-w-0 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none"
               />
-              <button className="bg-orange text-white px-4 py-2 rounded-r-lg hover:bg-orange-dark">
+              <button type="submit" className="bg-orange text-white px-4 py-2 rounded-r-lg hover:bg-orange-dark">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                 </svg>
               </button>
             </div>
-          </div>
+          </form>
 
           {/* Right Menu */}
           <div className="flex items-center justify-end gap-2 sm:gap-4 md:gap-6 flex-none">
