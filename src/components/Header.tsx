@@ -53,9 +53,9 @@ export const Header: React.FC = () => {
 
           {/* Right Menu */}
           <div className="flex items-center justify-end gap-2 sm:gap-4 md:gap-6 flex-none">
-            <Link href="/" className="text-sm hover:text-orange hidden md:block">
-              Hello, Rahul
-            </Link>
+            {/* <Link href="/" className="text-sm hover:text-orange hidden md:block">
+              Hello, Aryan
+            </Link> */}
             <Link href="/shop" className="text-sm hover:text-orange hidden md:block">
               Shop
             </Link>
