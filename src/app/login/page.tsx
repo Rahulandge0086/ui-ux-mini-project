@@ -117,15 +117,6 @@ export default function Login() {
             </button>
           </form>
 
-          {/* Demo Credentials */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-600 text-center mb-3">Demo Credentials:</p>
-            <div className="text-xs text-gray-500 space-y-1 text-center">
-              <p>Email: user@example.com</p>
-              <p>Password: password</p>
-            </div>
-          </div>
-
           {/* Sign Up Link */}
           <p className="text-center text-gray-600 mt-6">
             Don&apos;t have an account?{' '}
